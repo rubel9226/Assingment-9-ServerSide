@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const morgan = require('morgan');
 const createError = require('http-errors');
+const cookieParser = require('cookie-parser');
 
 
 
@@ -21,11 +22,12 @@ app.use(cors({
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
+app.use(cookieParser());
 
 
 // user route
-const userRouter = require('./routes/user.route');
-app.use('/api/users', userRouter);
+const bookingRouter = require('./routes/booking.route');
+app.use('/api/users', bookingRouter);
 
 
 // client error handling
