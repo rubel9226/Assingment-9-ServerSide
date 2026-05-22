@@ -3,6 +3,7 @@ const { handleCreateBookings, handleUpdateBooking, handleGetBookings, handleDele
 const { validateCreateBookings } = require('../validators/auth');
 const runValidation = require('../validators');
 const { isLoggedOut, verifyToken, isLoggedIn } = require('../middlewares/auth');
+const { logger } = require('../middlewares/booking.middleware');
 const bookingRouter = express.Router();
 
 
@@ -12,6 +13,12 @@ bookingRouter.post(
     validateCreateBookings, 
     runValidation,
     handleCreateBookings
+);
+
+// POST /api/users/register
+bookingRouter.get(
+    '/check/:id',
+    logger,
 );
 
 

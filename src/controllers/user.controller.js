@@ -26,11 +26,11 @@ const handleCreateBookings = async (req, res, next) => {
             reason
         }
 
-        console.log(data);
-
-
+        
+        
         // create booking
         const newBooking = await Bookings.create(data);
+        console.log(newBooking);
 
         return successResponse(res, {
             statusCode: 200,

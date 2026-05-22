@@ -29,6 +29,10 @@ app.use(cookieParser());
 const bookingRouter = require('./routes/booking.route');
 app.use('/api/users', bookingRouter);
 
+// doctor route
+const doctorsRouter = require('./routes/doctors.route');
+app.use('/api/doctors', doctorsRouter);
+
 
 // client error handling
 app.use((req, res, next) => {
