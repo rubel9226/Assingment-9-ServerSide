@@ -19,8 +19,8 @@ const verifyToken =async (req, res, next) => {
         }
         const JWKS = createRemoteJWKSet(
             // new URL(`${process.env.CLIENT_URL}/api/auth/jwks`)
-            new URL(`http://localhost:3000/api/auth/jwks`)
             // new URL(`http://localhost:3000/api/auth/jwks`)
+            new URL(`https://assingment-9-umber.vercel.app/api/auth/jwks`)
         )
         const { payload } = await jwtVerify(token, JWKS)
         req.user = payload;
