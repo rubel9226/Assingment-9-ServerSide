@@ -20,6 +20,7 @@ const verifyToken =async (req, res, next) => {
         const JWKS = createRemoteJWKSet(
             // new URL(`${process.env.CLIENT_URL}/api/auth/jwks`)
             new URL(`http://localhost:3000/api/auth/jwks`)
+            // http://localhost:3000/details/d2
         )
         const { payload } = await jwtVerify(token, JWKS)
         req.user = payload;

@@ -16,7 +16,10 @@ const { errorResponse } = require('./controllers/response.controller');
 
 
 app.use(cors({
-    origin: clintURL,
+    origin: [
+      'http://localhost:3000',
+      'https://assingment-9-umber.vercel.app'
+   ],
     credentials: true
 }));
 app.use(morgan('dev'));
