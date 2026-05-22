@@ -24,9 +24,7 @@ const seedDoctors = async (req, res, next) => {
 const getAllDoctors = async (req, res, next) => {
     try {
         const { search } = req.query;
-
         let doctors;
-
         if (search) {
             doctors = await Doctor.find({
                 $or: [
