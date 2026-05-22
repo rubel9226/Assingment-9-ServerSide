@@ -18,9 +18,8 @@ const verifyToken =async (req, res, next) => {
             throw createHttpError(401, 'Unauthorize')
         }
         const JWKS = createRemoteJWKSet(
-            // new URL(`${process.env.CLIENT_URL}/api/auth/jwks`)
-            new URL(`http://localhost:3000/api/auth/jwks`)
-            // http://localhost:3000/details/d2
+            new URL(`${process.env.CLIENT_URL}/api/auth/jwks`)
+            // new URL(`http://localhost:3000/api/auth/jwks`)
         )
         const { payload } = await jwtVerify(token, JWKS)
         req.user = payload;

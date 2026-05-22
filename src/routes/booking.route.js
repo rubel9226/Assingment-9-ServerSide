@@ -2,8 +2,7 @@ const express = require('express');
 const { handleCreateBookings, handleUpdateBooking, handleGetBookings, handleDeleteBookings } = require('../controllers/user.controller');
 const { validateCreateBookings } = require('../validators/auth');
 const runValidation = require('../validators');
-const { isLoggedOut, verifyToken, isLoggedIn } = require('../middlewares/auth');
-const { logger } = require('../middlewares/booking.middleware');
+const { logger, verifyToken } = require('../middlewares/booking.middleware');
 const bookingRouter = express.Router();
 
 
@@ -12,19 +11,15 @@ bookingRouter.post(
     '/bookings',
     validateCreateBookings, 
     runValidation,
+    verifyToken,
     handleCreateBookings
 );
 
-// POST /api/users/register
-bookingRouter.get(
-    '/check/:id',
-    logger,
-);
 
-
-// Put /api/users/bookings-update/id
+// get /api/users/bookings-update/:userId
 bookingRouter.get(
     '/bookings/:userId',
+    verifyToken,
     handleGetBookings
 
 )
@@ -33,6 +28,7 @@ bookingRouter.get(
 // Put /api/users/bookings-update/id
 bookingRouter.put(
     '/booking-update/:id',
+    verifyToken,
     handleUpdateBooking
 );
 
@@ -40,6 +36,7 @@ bookingRouter.put(
 // delete /api/users/bookings/:id
 bookingRouter.delete(
     '/booking/:id',
+    verifyToken,
     handleDeleteBookings
 );
 
