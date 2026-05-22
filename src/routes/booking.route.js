@@ -11,7 +11,6 @@ bookingRouter.post(
     '/bookings',
     validateCreateBookings, 
     runValidation,
-    verifyToken,
     handleCreateBookings
 );
 
